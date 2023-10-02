@@ -18,4 +18,4 @@
 * Wasp
 * Antman
 * Batman
-* Gatubela
+* Gatubela Negra
