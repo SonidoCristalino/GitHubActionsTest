@@ -19,3 +19,4 @@
 * Antman
 * Batman
 * Gatubela Negra
+* Rush
