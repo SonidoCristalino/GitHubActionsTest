@@ -1,0 +1,25 @@
+name: Commit Format Validation
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  commit-format-validation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout commit
+        uses: actions/checkout@v4
+
+      - name: Validate commit format
+        run: |
+          commit_pattern="^([A-Z]){4,}-([0-9]){4,}:"
+          for commit in $(git log --format=%s ${{ github.event.before }}..${{ github.event.after }}); do
+            if ! [[ $commit =~ $commit_pattern ]]; then
+              echo "ERROR: Commit message does not match the pattern: $commit"
+              exit 1
+            fi
+          done
+
