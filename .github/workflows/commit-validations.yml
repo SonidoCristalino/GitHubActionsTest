@@ -17,7 +17,7 @@ jobs:
         run: |
           commit_pattern="^([A-Z]){4,}-([0-9]){4,}:"
           for commit in $(git log --format=%s ${{ github.event.before }}..${{ github.event.after }}); do
-            if ! [[ $commit =~ $commit_pattern ]]; then
+            if ! [[ "$commit" =~ "$commit_pattern" ]]; then
               echo "ERROR: Commit message does not match the pattern: $commit"
               exit 1
             fi
